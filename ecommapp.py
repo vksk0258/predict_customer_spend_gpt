@@ -9,7 +9,7 @@ from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
 
 def my_function(df, input_value):
-    llm = OpenAI(api_token="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")
+    llm = OpenAI(api_token=st.secrets["openai_key"])
     pandas_ai = PandasAI(llm,  verbose=True)
     result = pandas_ai.run(df, prompt=input_value)
     return result
