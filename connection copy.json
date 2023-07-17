@@ -1,0 +1,9 @@
+{
+    "account": "dhupcra-ph36853",
+    "user": "vksk0258",
+    "password": "Vlsl0258!",
+    "role": "ACCOUNTADMIN",
+    "database": "SNOW_ML",
+    "schema": "PUBLIC",
+    "warehouse": "COMPUTE_WH"
+ }
