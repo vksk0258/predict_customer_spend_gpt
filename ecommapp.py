@@ -10,7 +10,7 @@ from pandasai.llm.openai import OpenAI
 
 
 def my_function(df, input_value):
-    llm = OpenAI(api_token=st.secrets["openai_key"])
+    llm = OpenAI(api_token=st.secrets['openai_key'])
     pandas_ai = PandasAI(llm)
     result = pandas_ai.run(df, prompt=input_value)
     return result
@@ -212,8 +212,8 @@ with col1:
     st.write("### 인공지능 분석")
     textarea_value = st.text_area("값 입력", "",label_visibility="collapsed")
     if st.button("출력"):
-        result = my_function(customer_df.toPandas(), textarea_value)
-        st.write(result)
+        result = my_function(customer_df.toPandas(), str(textarea_value))
+        st.write(result, unsafe_allow_html=True)
     name_define = pd.DataFrame({'테이블명':['SESSION_LENGTH', 'TIME_ON_APP', 'TIME_ON_WEBSITE', 'LENGTH_OF_MEMBERSHIP', 'PREDICTED_SPEND', 'ACTUAL_SPEND'],
                                 '소비자 행동 특성':['매장 평균 이용 시간 (분)', 'App 평균 이용 시간 (분)', 'Web 평균 이용 시간 (분)', '맴버쉽 가입 년 수','예측 소비액', '실제 소비액']})
     st.dataframe(name_define)
