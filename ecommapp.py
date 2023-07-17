@@ -12,7 +12,7 @@ from pandasai.llm.openai import OpenAI
 def my_function(df, input_value):
     llm = OpenAI(api_token=st.secrets["openai_key"])
     pandas_ai = PandasAI(llm,  verbose=True)
-    result = pandas_ai.run(df, prompt=input_value)
+    result = str(pandas_ai.run(df, prompt=input_value))
     return result
 
 
