@@ -7,6 +7,7 @@ from snowflake.snowpark.functions import *
 import json
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
+import sklearn
 
 
 def my_function(df, input_value):
