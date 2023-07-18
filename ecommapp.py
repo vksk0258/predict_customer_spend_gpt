@@ -210,7 +210,7 @@ with col2:
 empty1,col1 ,empty2= st.columns([3.1, 12, 4])
 with col1:    
     st.markdown("----")
-    st.write("### 인공지능 분석")
+    st.write("### 자연어 인공지능")
     textarea_value = st.text_area("값 입력", "",label_visibility="collapsed")
     if st.button("출력"):
         result = my_function(customer_df.toPandas(), str(textarea_value))
