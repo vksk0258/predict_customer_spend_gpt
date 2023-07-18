@@ -215,7 +215,7 @@ with col1:
     if st.button("출력"):
         result = my_function(customer_df.toPandas(), str(textarea_value))
         st.markdown('### '+result)
-    name_define = pd.DataFrame({'테이블명':['SESSION_LENGTH', 'TIME_ON_APP', 'TIME_ON_WEBSITE', 'LENGTH_OF_MEMBERSHIP', 'PREDICTED_SPEND', 'ACTUAL_SPEND'],
+    name_define = pd.DataFrame({'컬럼명':['SESSION_LENGTH', 'TIME_ON_APP', 'TIME_ON_WEBSITE', 'LENGTH_OF_MEMBERSHIP', 'PREDICTED_SPEND', 'ACTUAL_SPEND'],
                                 '소비자 행동 특성':['매장 평균 이용 시간 (분)', 'App 평균 이용 시간 (분)', 'Web 평균 이용 시간 (분)', '맴버쉽 가입 년 수','예측 소비액', '실제 소비액']})
     st.dataframe(name_define)
     st.dataframe(customer_df.toPandas())
