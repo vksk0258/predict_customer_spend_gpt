@@ -12,7 +12,7 @@ import sklearn
 
 
 def my_function(df, input_value):
-    llm = OpenAI(api_token='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')
+    llm = OpenAI(api_token=st.secrets["openai_key"])
     pandas_ai = PandasAI(llm)
     result = pandas_ai.run(df, prompt=input_value)
     return result
