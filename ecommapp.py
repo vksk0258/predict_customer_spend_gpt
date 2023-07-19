@@ -10,10 +10,7 @@ from pandasai.llm.openai import OpenAI
 import matplotlib
 import sklearn
 
-key = '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'
-
 def my_function(df, input_value):
-    # llm = OpenAI(api_token=key)
     llm = OpenAI(api_token=st.secrets["openai_key"])
     pandas_ai = PandasAI(llm)
     result = pandas_ai.run(df, prompt=input_value)
@@ -219,10 +216,10 @@ with col1:
     name_define = pd.DataFrame({'컬럼명':['SESSION_LENGTH', 'TIME_ON_APP', 'TIME_ON_WEBSITE', 'LENGTH_OF_MEMBERSHIP', 'PREDICTED_SPEND', 'ACTUAL_SPEND'],
                                 '소비자 행동 특성':['매장 평균 이용 시간 (분)', 'App 평균 이용 시간 (분)', 'Web 평균 이용 시간 (분)', '맴버쉽 가입 년 수','예측 소비액', '실제 소비액']})
     if st.button("출력"):
-        # try:
-        result = my_function(customer_df.toPandas(), str(textarea_value))
-        # except:
-        #     result = "정확한 변수 이름과 정의를 내려주세요."
+        try:
+            result = my_function(customer_df.toPandas(), str(textarea_value))
+        except:
+            result = "정확한 변수 이름과 정의를 내려주세요."
         st.markdown('#### '+result)
 
     st.dataframe(name_define)
