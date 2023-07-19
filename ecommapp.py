@@ -10,8 +10,10 @@ from pandasai.llm.openai import OpenAI
 import matplotlib
 import sklearn
 
+key = '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'
 
 def my_function(df, input_value):
+    # llm = OpenAI(api_token=key)
     llm = OpenAI(api_token=st.secrets["openai_key"])
     pandas_ai = PandasAI(llm)
     result = pandas_ai.run(df, prompt=input_value)
