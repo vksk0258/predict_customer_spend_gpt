@@ -7,12 +7,13 @@ from snowflake.snowpark.functions import *
 import json
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
+import matplotlib
 import sklearn
 
 
 def my_function(df, input_value):
-    llm = OpenAI(api_token=st.secrets['openai_key'])
-    pandas_ai = PandasAI(llm)
+    llm = OpenAI(api_token='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')
+    pandas_ai = PandasAI(llm, verbose=True, conversational=True)
     result = pandas_ai.run(df, prompt=input_value)
     return result
 
@@ -211,14 +212,16 @@ empty1,col1 ,empty2= st.columns([3.1, 12, 4])
 with col1:    
     st.markdown("----")
     st.write("### 자연어 인공지능")
+    matplotlib.use('TkAgg')
     textarea_value = st.text_area("값 입력", "",label_visibility="collapsed")
-    if st.button("출력"):
-        try:
-            result = my_function(customer_df.toPandas(), str(textarea_value))
-        except:
-            result = "정확한 변수 이름과 정의를 내려주세요."
-        st.markdown('#### '+result)
     name_define = pd.DataFrame({'컬럼명':['SESSION_LENGTH', 'TIME_ON_APP', 'TIME_ON_WEBSITE', 'LENGTH_OF_MEMBERSHIP', 'PREDICTED_SPEND', 'ACTUAL_SPEND'],
                                 '소비자 행동 특성':['매장 평균 이용 시간 (분)', 'App 평균 이용 시간 (분)', 'Web 평균 이용 시간 (분)', '맴버쉽 가입 년 수','예측 소비액', '실제 소비액']})
+    if st.button("출력"):
+        # try:
+        result = my_function(customer_df.toPandas(), str(textarea_value))
+        # except:
+        #     result = "정확한 변수 이름과 정의를 내려주세요."
+        st.markdown('#### '+result)
+
     st.dataframe(name_define)
     st.dataframe(customer_df.toPandas())
