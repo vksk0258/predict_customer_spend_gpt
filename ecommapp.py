@@ -10,7 +10,7 @@ from pandasai.llm.openai import OpenAI
 import matplotlib
 
 def my_function(df, input_value):
-    llm = OpenAI(api_token='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')
+    llm = OpenAI(api_token=st.secrets["openai_key"])
     pandas_ai = PandasAI(llm)
     result = pandas_ai.run(df, prompt=input_value)
     return result
