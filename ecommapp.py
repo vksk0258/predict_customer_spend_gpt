@@ -209,7 +209,7 @@ with col2:
 empty1,col1 ,empty2= st.columns([3.1, 12, 4])
 with col1:    
     st.markdown("----")
-    st.write("## Panas AI🐼")
+    st.write("## Pandas AI🐼")
     matplotlib.use('TkAgg')
     col1, col2 = st.columns([1,1])
     with col1:
