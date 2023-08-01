@@ -1,9 +1,9 @@
 {
-    "account": "QG41409.ap-northeast-2.aws",
+    "account": "YP46315.ap-northeast-2.aws",
     "user": "vksk0258",
     "password": "Vlsl0258!",
     "role": "ACCOUNTADMIN",
-    "database": "SNOW_ML",
+    "database": "ML",
     "schema": "PUBLIC",
     "warehouse": "COMPUTE_WH"
  }

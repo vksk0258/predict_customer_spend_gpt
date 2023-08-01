@@ -1,9 +1,9 @@
 {
-    "account": "dhupcra-ph36853",
+    "account": "ryyhbkf-mr83680",
     "user": "vksk0258",
     "password": "Vlsl0258!",
     "role": "ACCOUNTADMIN",
-    "database": "SNOW_ML",
+    "database": "ML",
     "schema": "PUBLIC",
     "warehouse": "COMPUTE_WH"
  }

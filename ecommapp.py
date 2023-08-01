@@ -8,10 +8,9 @@ import json
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
 import matplotlib
-import sklearn
 
 def my_function(df, input_value):
-    llm = OpenAI(api_token=st.secrets["openai_key"])
+    llm = OpenAI(api_token='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')
     pandas_ai = PandasAI(llm)
     result = pandas_ai.run(df, prompt=input_value)
     return result
@@ -210,17 +209,21 @@ with col2:
 empty1,col1 ,empty2= st.columns([3.1, 12, 4])
 with col1:    
     st.markdown("----")
-    st.write("### 자연어 인공지능")
+    st.write("## Panas AI🐼")
     matplotlib.use('TkAgg')
-    textarea_value = st.text_area("값 입력", "",label_visibility="collapsed")
-    name_define = pd.DataFrame({'컬럼명':['SESSION_LENGTH', 'TIME_ON_APP', 'TIME_ON_WEBSITE', 'LENGTH_OF_MEMBERSHIP', 'PREDICTED_SPEND', 'ACTUAL_SPEND'],
-                                '소비자 행동 특성':['매장 평균 이용 시간 (분)', 'App 평균 이용 시간 (분)', 'Web 평균 이용 시간 (분)', '맴버쉽 가입 년 수','예측 소비액', '실제 소비액']})
-    if st.button("출력"):
-        # try:
-        result = my_function(customer_df.toPandas(), str(textarea_value))
-        # except:
-        #     result = "정확한 변수 이름과 정의를 내려주세요."
-        st.markdown('#### '+result)
+    col1, col2 = st.columns([1,1])
+    with col1:
+        st.info("Your DATA")
+        name_define = pd.DataFrame({'컬럼명':['SESSION_LENGTH', 'TIME_ON_APP', 'TIME_ON_WEBSITE', 'LENGTH_OF_MEMBERSHIP', 'PREDICTED_SPEND', 'ACTUAL_SPEND'],
+                                    '소비자 행동 특성':['매장 평균 이용 시간 (분)', 'App 평균 이용 시간 (분)', 'Web 평균 이용 시간 (분)', '맴버쉽 가입 년 수','예측 소비액', '실제 소비액']})
+        # st.dataframe(name_define)
+        st.dataframe(customer_df.toPandas())
+    with col2:
+        st.info("Chat with your DATA")
+        textarea_value = st.text_area("Enter your qurey", "")
+        if textarea_value is not None:
+            if st.button("Chat with DATA"):
+                st.info("Your qurey: "+ str(textarea_value))
+                result = my_function(customer_df.toPandas(), str(textarea_value))
+                st.success(result)
 
-    st.dataframe(name_define)
-    st.dataframe(customer_df.toPandas())
